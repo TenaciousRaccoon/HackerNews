@@ -1,0 +1,44 @@
+<div class="flex items-center justify-center mt-[50px] dark:text-gray-100">
+  <button
+    (click)="pageChange.emit(currentPage - 1)"
+    [disabled]="currentPage === 1 || disabled"
+    class="inline-flex items-center cursor-pointer p-2 rounded-md border border-gray-300 border-gray-700 bg-gray-800 hover:bg-gray-700 disabled:opacity-40 disabled:cursor-not-allowed transition"
+  >
+    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+    </svg>
+    Prev
+  </button>
+
+  <div class="hidden md:flex items-center gap-1 m-2">
+    @for (page of visiblePages; track page) {
+      @if (page === -1) {
+        <span class="p-1 text-gray-400">...</span>
+      } @else {
+        <button
+          (click)="pageChange.emit(page)"
+          [class.bg-orange-500]="page === currentPage"
+          [class.text-white]="page === currentPage"
+          [class.border-orange-500]="page === currentPage"
+          [class.bg-gray-800]="page !== currentPage"
+          [class.hover:bg-gray-700]="page !== currentPage"
+          [disabled]="disabled"
+          class="min-w-[32px] p-1 cursor-pointer rounded-md border border-gray-300 border-gray-700 font-medium text-center transition disabled:opacity-40 disabled:cursor-not-allowed"
+        >
+          {{ page }}
+        </button>
+      }
+    }
+  </div>
+
+  <button
+    (click)="pageChange.emit(currentPage + 1)"
+    [disabled]="currentPage === totalPages || disabled"
+    class="inline-flex items-center cursor-pointer p-2 rounded-md border border-gray-300 border-gray-700 bg-gray-800 hover:bg-gray-700 disabled:opacity-40 disabled:cursor-not-allowed transition"
+  >
+    Next
+    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+    </svg>
+  </button>
+</div>

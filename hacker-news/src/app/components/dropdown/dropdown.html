@@ -1,0 +1,24 @@
+<div class="relative">
+    <button 
+        type="button"
+        (click)="toggleDropdown()"
+        class="flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors cursor-pointer shrink-0">
+        <span>{{ selectedFilter }}</span>
+        <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+        </svg>
+    </button>
+
+    @if (isDropdownOpen) {
+        <div class="absolute left-0 mt-2 w-40 bg-white border border-slate-200 rounded-lg shadow-lg py-1 z-50">
+            @for (option of filterOptions; track option) {
+                <button 
+                  type="button"
+                  (click)="selectFilter(option)"
+                  class="w-full text-left px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 hover:text-indigo-600 transition-colors">
+                  {{ option }}
+                </button>
+            }
+        </div>
+    }
+</div>
