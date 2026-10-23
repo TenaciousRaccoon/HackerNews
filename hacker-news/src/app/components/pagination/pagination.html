@@ -1,5 +1,6 @@
 <div class="flex items-center justify-center mt-[50px] dark:text-gray-100">
   <button
+    data-testid="prev-button"
     (click)="pageChange.emit(currentPage - 1)"
     [disabled]="currentPage === 1 || disabled"
     class="inline-flex items-center cursor-pointer p-2 rounded-md border border-gray-300 border-gray-700 bg-gray-800 hover:bg-gray-700 disabled:opacity-40 disabled:cursor-not-allowed transition"
@@ -16,6 +17,7 @@
         <span class="p-1 text-gray-400">...</span>
       } @else {
         <button
+          [attr.data-testid]="'page-button-' + page"
           (click)="pageChange.emit(page)"
           [class.bg-orange-500]="page === currentPage"
           [class.text-white]="page === currentPage"
@@ -32,6 +34,7 @@
   </div>
 
   <button
+    data-testid="next-button"
     (click)="pageChange.emit(currentPage + 1)"
     [disabled]="currentPage === totalPages || disabled"
     class="inline-flex items-center cursor-pointer p-2 rounded-md border border-gray-300 border-gray-700 bg-gray-800 hover:bg-gray-700 disabled:opacity-40 disabled:cursor-not-allowed transition"

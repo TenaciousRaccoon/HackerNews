@@ -1,9 +1,20 @@
-<a href="{{ url }}" class="p-6 hover:bg-slate-100 transition-colors flex flex-col">
+<a
+  data-testid="story-link"
+  href="{{ story().url }}"
+  class="p-6 hover:bg-slate-100 transition-colors flex flex-col"
+>
   <div class="flex items-center gap-3">
-    <span class="text-xs font-semibold p-1 rounded-full bg-orange-500 text-white">
-      {{ by }}
+    <span
+      data-testid="story-author"
+      class="text-xs font-semibold p-1 rounded-full bg-orange-500 text-white"
+    >
+      {{ story().by }}
     </span>
-    <span class="text-xs text-slate-400">{{ time * 1000 | date: 'mediumDate' }}</span>
+    <span data-testid="story-time" class="text-xs text-slate-400">{{
+      story().time * 1000 | date: 'mediumDate'
+    }}</span>
   </div>
-  <h2 class="text-lg font-semibold text-slate-800">{{ title }}</h2>
+  <h2 data-testid="story-title" class="text-lg font-semibold text-slate-800">{{
+    story().title
+  }}</h2>
 </a>

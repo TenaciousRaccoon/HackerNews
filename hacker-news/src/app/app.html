@@ -1,31 +1,24 @@
-<hacker-news-navbar></hacker-news-navbar>
-<div class="min-h-screen bg-slate-50">
+<hacker-news-navbar data-testid="navbar"></hacker-news-navbar>
+<div data-testid="main-container" class="min-h-screen bg-slate-50">
   <div class="max-w-4xl mx-auto">
     <div class="mb-8 text-center">
-      <h1 class="text-3xl font-extrabold text-slate-900 pt-8">Hacker News</h1>
+      <h1 data-testid="heading" class="text-3xl font-extrabold text-slate-900 pt-8">Hacker News</h1>
       <p class="mt-2 text-sm text-slate-600">A social news and link-aggregation website.</p>
     </div>
 
-    <div class="bg-white shadow-sm rounded-xl">
+    <div data-testid="stories-container" class="bg-white shadow-sm rounded-xl">
       @for (story of hackerNewsService.stories(); track story.id) {
-        <list-item
-          [id]="story.id"
-          [title]="story.title"
-          [by]="story.by"
-          [descendants]="story.descendants"
-          [score]="story.score"
-          [time]="story.time"
-          [kids]="story.kids"
-          [type]="story.type"
-          [url]="story.url"
-        ></list-item>
+        <list-item [story]="story"></list-item>
       } @empty {
-        <p class="p-6 text-center text-slate-500">No items available.</p>
+        <p data-testid="empty-stories-message" class="p-6 text-center text-slate-500"
+          >No items available.</p
+        >
       }
     </div>
   </div>
 
   <hacker-news-pagination
+    data-testid="pagination"
     [currentPage]="hackerNewsService.currentPage()"
     [totalItems]="hackerNewsService.totalItems()"
     [pageSize]="hackerNewsService.pageSize()"

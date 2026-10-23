@@ -2,12 +2,13 @@
   <div class="flex justify-center h-16">
     <div class="flex items-center gap-3">
       <div
+        data-testid="navbar-logo"
         class="bg-orange-500 text-white font-bold h-9 w-9 rounded-lg flex items-center justify-center shadow-sm"
       >
         HN
       </div>
-      <span class="font-bold text-slate-800 text-lg">Hacker News</span>
-      <hackernews-dropdown></hackernews-dropdown>
+      <span data-testid="navbar-title" class="font-bold text-slate-800 text-lg">Hacker News</span>
+      <hackernews-dropdown data-testid="navbar-dropdown"></hackernews-dropdown>
     </div>
   </div>
 </nav>
